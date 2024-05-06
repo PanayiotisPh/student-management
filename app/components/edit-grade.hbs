@@ -1,15 +1,20 @@
 <h1>Edit Grade</h1>
 <div>
   <form {{on "submit" this.editGrades}}>
+
     <label for="math">Mathematics:</label>
     {{input type="number" min="0" max="10" id="math" value=this.grade.math}}
     <br><br>
+
     <label for="it">Computer Science:</label>
     {{input type="number" min="0" max="10" id="it" value=this.grade.it}}
     <br><br>
+
     <label for="class">Literature:</label>
     {{input type="number" min="0" max="10" id="literature" value=this.grade.literature}}
     <br><br>
+
     <button type="submit">Edit</button>
+    
   </form>
 </div>

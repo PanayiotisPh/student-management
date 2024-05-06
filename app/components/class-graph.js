@@ -3,14 +3,17 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class ClassGraphComponent extends Component {
-  @tracked chart; // Track the chart instance
+  // On default, the selected class is Mathematics to match the default data in selector
+  @tracked chart;
   @tracked chartData = [];
   @tracked selectedClassId = 'Mathematics';
+
   constructor() {
     super(...arguments);
     this.loadData();
   }
 
+  // Set new Class and reload data
   @action
   handleClassSelection(event) {
     const selectedClassId = event.target.value;
@@ -18,6 +21,7 @@ export default class ClassGraphComponent extends Component {
     this.loadData();
   }
 
+  //get the data from the API
   @action
   loadData() {
     fetch(
@@ -31,6 +35,7 @@ export default class ClassGraphComponent extends Component {
       .catch((error) => console.error('Error fetching data:', error));
   }
 
+  // Create the chart
   @action
   createChart() {
     const ctx = document.getElementById('classChart').getContext('2d');

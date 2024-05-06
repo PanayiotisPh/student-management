@@ -1,6 +1,8 @@
 import Route from '@ember/routing/route';
 
 export default class EditGradesRoute extends Route {
+  // Fetch the data from the API to display in the template/component
+  // formats data to fit the autofill of the form
   async model(params) {
     try {
       const response = await fetch(
@@ -22,11 +24,8 @@ export default class EditGradesRoute extends Route {
       console.log(convertedData);
       return convertedData;
 
-      // Reshape the data to fit your application's conventions
     } catch (error) {
       console.error('Error fetching student data:', error);
-      // Handle errors in a way that the rest of your app can respond to,
-      // e.g., by returning undefined, an empty object, or setting an error state.
       return {};
     }
   }

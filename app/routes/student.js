@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default class StudentRoute extends Route {
+  // Fetch the data from the API to display in the template/component
   async model(params) {
     try {
       const response = await fetch(
@@ -18,11 +19,8 @@ export default class StudentRoute extends Route {
       };
       return convertedData;
 
-      // Reshape the data to fit your application's conventions
     } catch (error) {
       console.error('Error fetching student data:', error);
-      // Handle errors in a way that the rest of your app can respond to,
-      // e.g., by returning undefined, an empty object, or setting an error state.
       return {};
     }
   }

@@ -3,6 +3,9 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class StudentFormComponent extends Component {
+
+  // remove a set of input fields
+  // works by removing the element at the last index and updating the array
   @action
   removeInputLine(index) {
     if (this.students.length > 1) {
@@ -13,13 +16,16 @@ export default class StudentFormComponent extends Component {
     }
   }
 
+  // initialize the students array with one set of input fields
   @tracked students = [{ name: '', birth: '', class: '' }];
 
+  // add a new set of input fields
   @action
   addStudent() {
     this.students = [...this.students, { name: '', birth: '', class: '' }];
   }
 
+  // get data from form and format it as JSON data matching the SQL schema
   @action
   submitForm(event) {
     event.preventDefault();
@@ -34,6 +40,7 @@ export default class StudentFormComponent extends Component {
     this.sendData(jsonData);
   }
 
+  // send the data to the database
   sendData(jsonData) {
     console.log('Sending JSON data:', JSON.stringify(jsonData));
     fetch('http://localhost:8090/student', {

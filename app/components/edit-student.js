@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 export default class EditStudentComponent extends Component {
   @tracked student = this.args.student;
 
+  // get data from form and format it as JSON data matching the SQL schema
   @action
   editStudent(event) {
     event.preventDefault();
@@ -18,11 +19,13 @@ export default class EditStudentComponent extends Component {
     this.sendData(jsonData);
   }
 
+  // update the student's class from selector
   @action
   updateClass(event) {
     this.student.class = event.target.value;
   }
 
+  // update the student's data
   sendData(jsonData) {
     fetch(`http://localhost:8090/student/${this.student.id}`, {
       method: 'PUT',

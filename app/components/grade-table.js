@@ -5,24 +5,30 @@ import { inject as service } from '@ember/service';
 
 
 export default class GradeTableComponent extends Component {
+  // Define the tracked properties
+  // set studentId default value to 1 to match the first student in the list(default value)
   @tracked grades = [];
   @tracked selectedStudentId = 1;
   @service router;
 
+  // Get the students data from the parent component
   get students() {
     return this.args.data;
   }
 
+  // Fetch the grades for the selected student when the component is instantiated
   constructor() {
     super(...arguments);
     this.fetchGrades(); // Pre-fetch grades when the component is instantiated
   }
 
+  // Navigate to the edit grades page
   @action
   navigateToEditGrades(studentId, year, quarter) {
     this.router.transitionTo('edit-grades', studentId, year, quarter);
   }
 
+  // Handle the student selection from the dropdown
   @action
   handleStudentGradeSelection(event) {
     const selectedStudentId = event.target.value;
@@ -30,6 +36,7 @@ export default class GradeTableComponent extends Component {
     this.fetchGrades();
   }
 
+  // Fetch the grades for the selected student
   @action
   fetchGrades() {
     fetch(`http://localhost:8090/student/grades/${this.selectedStudentId}`)

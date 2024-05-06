@@ -5,17 +5,18 @@
         <Input type="text" @value={{mut student.name}} placeholder="Student Name" />
         <Input type="date" @value={{mut student.birth}} placeholder="Date Of Birth" />
         <select onchange={{action (mut student.class) value="target.value"}}>
-        <option value="">Select Class</option>
-        <option value="IT Class">IT Class</option>
-        <option value="Math Class">Math Class</option>
-        <option value="Literature Class">Literature Class</option>
+          <option value="">Select Class</option>
+          <option value="IT Class">IT Class</option>
+          <option value="Math Class">Math Class</option>
+          <option value="Literature Class">Literature Class</option>
         </select>
     </div>
     {{/each}}
 
    <div class="form-controls">
-    <input type="submit" value="Submit">
-    <button type="button" class="add" {{on "click" this.addStudent}}>Add</button>
-    <button type="button" class="remove" {{on "click" this.removeInputLine}}>Remove</button>
+      <input type="submit" value="Submit">
+      <button type="button" class="add" {{on "click" this.addStudent}}>Add</button>
+      <button type="button" class="remove" {{on "click" this.removeInputLine}}>Remove</button>
   </div>
+
 </form>

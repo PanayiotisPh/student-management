@@ -3,6 +3,8 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class StudentGraphComponent extends Component {
+  // Define the tracked properties
+  // set studentId default value to 1 to match the first student in the list(default value)
   @tracked chart; // Track the chart instance
   @tracked chartData = [];
   @tracked selectedStudentId = 1;
@@ -11,10 +13,12 @@ export default class StudentGraphComponent extends Component {
     this.loadData();
   }
 
+  // Get the students data from the parent component
   get students() {
     return this.args.data;
   }
 
+  // Handle the student selection from the dropdown
   @action
   handleStudentSelection(event) {
     const selectedStudentId = event.target.value;
@@ -23,6 +27,7 @@ export default class StudentGraphComponent extends Component {
     this.loadData();
   }
 
+  // Fetch the data for the selected class
   @action
   loadData() {
     fetch(
@@ -36,6 +41,7 @@ export default class StudentGraphComponent extends Component {
       .catch((error) => console.error('Error fetching data:', error));
   }
 
+  // Create the chart
   @action
   createChart() {
     const ctx = document.getElementById('myChart').getContext('2d');
