@@ -1,4 +1,4 @@
-<table>
+<table id="table-hoverable">
     <thead>
         <tr>
             <th>Student ID</th>
@@ -9,7 +9,7 @@
     </thead>
     <tbody>
         {{#each @data as |student|}}
-        <tr>
+        <tr role="button" {{on "click" (fn this.navigateToStudent (get student "Student ID"))}}>
             <td>{{get student "Student ID"}}</td>
             <td>{{get student "Student Name"}}</td>
             <td>{{get student "Date Of Birth"}}</td>

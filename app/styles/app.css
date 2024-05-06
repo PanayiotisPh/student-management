@@ -121,3 +121,8 @@ select {
   margin-right: auto;
   margin-bottom: 2%;
 }
+
+.table-hoverable tr:hover {
+  cursor: pointer;
+}
+

@@ -13,11 +13,16 @@ export default class FormGradesComponent extends Component {
     }
   }
 
-  @tracked grades = [{ id:'', year: '', quarter:'', math: '', it: '', literature: '' }];
+  @tracked grades = [
+    { id: '', year: '', quarter: '', math: '', it: '', literature: '' },
+  ];
 
   @action
   addStudent() {
-    this.grades = [...this.grades, { id:'', year: '', quarter:'', math: '', it: '', literature: '' }];
+    this.grades = [
+      ...this.grades,
+      { id: '', year: '', quarter: '', math: '', it: '', literature: '' },
+    ];
   }
 
   @action
@@ -26,12 +31,12 @@ export default class FormGradesComponent extends Component {
     console.log('Submitting grades:', this.grades);
 
     const jsonData = this.grades.map((grade) => ({
-        'Student ID': grade.id,
-        'Year': grade.year,
-        'Quarter': grade.quarter,
-        'Mathematics': grade.math,
-        'Computer Science': grade.it,
-        'Literature': grade.literature,
+      'Student ID': grade.id,
+      Year: grade.year,
+      Quarter: grade.quarter,
+      Mathematics: grade.math,
+      'Computer Science': grade.it,
+      Literature: grade.literature,
     }));
 
     this.sendData(jsonData);
