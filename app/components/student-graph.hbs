@@ -1,0 +1,14 @@
+<div>
+    <select onchange={{this.handleStudentSelection}}>
+    {{#each this.students as |student|}}
+        <option value={{get student "Student ID"}}>{{get student "Student Name"}}</option>
+    {{/each}}
+    </select>
+</div>
+
+<div>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+    <canvas id="myChart" width="400" height="200"></canvas>
+</div>

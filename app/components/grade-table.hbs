@@ -1,0 +1,31 @@
+<div>
+    <select class="student-dropdown" onchange={{this.handleStudentGradeSelection}}>
+        {{#each this.args.data as |student|}}
+            <option value={{get student "Student ID"}}>{{get student "Student Name"}}</option>
+        {{/each}}
+    </select>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Quarter</th>
+                <th>Mathematics</th>
+                <th>Computer Science</th>
+                <th>Literature</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this.grades as |grade|}}
+            <tr>
+                <td>{{get grade "Year"}}</td>
+                <td>{{get grade "Quarter"}}</td>
+                <td>{{get grade "Mathematics"}}</td>
+                <td>{{get grade "Computer Science"}}</td>
+                <td>{{get grade "Literature"}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

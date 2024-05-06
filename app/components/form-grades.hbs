@@ -1,0 +1,30 @@
+<form id="gradeForm" {{on "submit" this.submitForm}}>
+  {{#each this.grades as |grade index|}}
+    <div class="input-group">
+        <select onchange={{action (mut grade.id) value="target.value"}}>
+            <option value="">Select Student</option>
+            {{#each this.args.data as |student|}}
+                <option value={{get student "Student ID"}}>{{get student "Student Name"}}</option>
+            {{/each}}
+        </select>
+        <Input type="number" min="1900" max="2099" @value={{mut grade.year}} placeholder="Year" />
+        <select onchange={{action (mut grade.quarter) value="target.value"}}>
+            <option value="">Select Quarter</option>
+            <option value="Q1">Q1</option>
+            <option value="Q2">Q2</option>
+            <option value="Q3">Q3</option>
+            <option value="Q4">Q4</option>
+        </select>
+        <Input type="number" min="0" max="10" @value={{mut grade.math}} placeholder="Math Grade" />
+        <Input type="number" min="0" max="10" @value={{mut grade.it}} placeholder="Computer Science Grade" />
+        <Input type="number" min="0" max="10" @value={{mut grade.literature}} placeholder="Literature Grade" />
+        
+    </div>
+    {{/each}}
+
+   <div class="form-controls">
+    <input type="submit" value="Submit">
+    <button type="button" class="add" {{on "click" this.addStudent}}>Add</button>
+    <button type="button" class="remove" {{on "click" this.removeInputLine}}>Remove</button>
+  </div>
+</form>

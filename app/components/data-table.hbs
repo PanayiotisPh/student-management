@@ -1,0 +1,20 @@
+<table>
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Date Of Birth</th>
+            <th>Student Class</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each @data as |student|}}
+        <tr>
+            <td>{{get student "Student ID"}}</td>
+            <td>{{get student "Student Name"}}</td>
+            <td>{{get student "Date Of Birth"}}</td>
+            <td>{{get student "Student Class"}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

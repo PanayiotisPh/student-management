@@ -1,0 +1,19 @@
+<div>
+    <form {{on "submit" this.handleSubmit}}>
+    <input id="year" type="number" min="1900" max="2099" step="1" value="2009" onchange={{this.handleYearSelection}}/>
+    <select id="quarter" onchange={{this.handleQuarterSelection}}>
+        <option value="1">Q1</option>
+        <option value="2">Q2</option>
+        <option value="3">Q3</option>
+        <option value="4">Q4</option>
+    </select>
+    <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+    <canvas id="quarterChart" width="400" height="200"></canvas>
+</div>
