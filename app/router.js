@@ -11,4 +11,5 @@ Router.map(function () {
   this.route('management');
   this.route('grades');
   this.route('student', { path: '/student/:student_id' });
+  this.route('edit-grades', { path: '/edit-grades/:student_id/:year/:quarter' });
 });

@@ -1,10 +1,13 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
+
 
 export default class GradeTableComponent extends Component {
   @tracked grades = [];
   @tracked selectedStudentId = 1;
+  @service router;
 
   get students() {
     return this.args.data;
@@ -13,6 +16,11 @@ export default class GradeTableComponent extends Component {
   constructor() {
     super(...arguments);
     this.fetchGrades(); // Pre-fetch grades when the component is instantiated
+  }
+
+  @action
+  navigateToEditGrades(studentId, year, quarter) {
+    this.router.transitionTo('edit-grades', studentId, year, quarter);
   }
 
   @action

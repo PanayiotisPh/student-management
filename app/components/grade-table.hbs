@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             {{#each this.grades as |grade|}}
-            <tr>
+            <tr role="button" {{on "click" (fn this.navigateToEditGrades (get grade "Student ID") (get grade "Year") (get grade "Quarter"))}}>
                 <td>{{get grade "Year"}}</td>
                 <td>{{get grade "Quarter"}}</td>
                 <td>{{get grade "Mathematics"}}</td>

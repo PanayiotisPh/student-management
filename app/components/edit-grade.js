@@ -2,29 +2,23 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-export default class EditStudentComponent extends Component {
-  @tracked student = this.args.student;
+export default class EditGradeComponent extends Component {
+  @tracked grade = this.args.grade;
 
   @action
-  editStudent(event) {
+  editGrades(event) {
     event.preventDefault();
 
     const jsonData = {
-      'Student Name': this.student.name,
-      'Date Of Birth': this.student.birth,
-      'Student Class': this.student.class,
+      'Mathematics': this.grade.math,
+      'Computer Science': this.grade.it,
+      'Literature': this.grade.literature,
     };
 
     this.sendData(jsonData);
   }
-
-  @action
-  updateClass(event) {
-    this.student.class = event.target.value;
-  }
-
   sendData(jsonData) {
-    fetch(`http://localhost:8090/student/${this.student.id}`, {
+    fetch(`http://localhost:8090/student/grade/${this.grade.id}/${this.grade.year}/${this.grade.quarter}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

@@ -1,21 +1,25 @@
 import Route from '@ember/routing/route';
 
-export default class StudentRoute extends Route {
+export default class EditGradesRoute extends Route {
   async model(params) {
     try {
       const response = await fetch(
-        `http://localhost:8090/student/${params.student_id}`,
+        `http://localhost:8090/student/grade/${params.student_id}/${params.year}/${params.quarter}`,
       );
       if (!response.ok) {
         throw new Error('Failed to fetch student data');
       }
       const data = await response.json();
+      console.log(data);
       const convertedData = {
-        id: data.student['Student ID'],
-        name: data.student['Student Name'],
-        birth: data.student['Date Of Birth'],
-        class: data.student['Student Class'],
+        id: data.grades[0]['Student ID'],
+        year: data.grades[0]['Year'],
+        quarter: data.grades[0]['Quarter'],
+        math: data.grades[0]['Mathematics'],
+        it: data.grades[0]['Computer Science'],
+        literature: data.grades[0]['Literature'],
       };
+      console.log(convertedData);
       return convertedData;
 
       // Reshape the data to fit your application's conventions
