@@ -80,6 +80,13 @@ h2 {
   margin-bottom: 5%;
 }
 
+h3 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 1%;
+}
+
 .studentName {
   display: inline-block;
   margin-left: 20px;
@@ -122,6 +129,6 @@ select {
   margin-bottom: 2%;
 }
 
-.table-hoverable tr:hover {
+.table-hoverable td:hover {
   cursor: pointer;
 }
